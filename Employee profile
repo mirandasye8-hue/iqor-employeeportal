@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IQOR Clean Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Inter', sans-serif;
+background:#e6ecf5;
+}
+
+/* LOGIN */
+#loginPage{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:linear-gradient(135deg,#1e3a8a,#2563eb);
+}
+
+.loginBox{
+background:white;
+padding:30px;
+border-radius:12px;
+width:320px;
+text-align:center;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:6px;
+border:1px solid #ddd;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:6px;
+}
+
+/* DASHBOARD */
+#dashboard{
+display:none;
+max-width:900px;
+margin:20px auto;
+background:white;
+border-radius:16px;
+box-shadow:0 10px 40px rgba(0,0,0,0.1);
+overflow:hidden;
+}
+
+/* TOP BAR */
+.topbar{
+background:linear-gradient(90deg,#1e3a8a,#2563eb);
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.nav span{
+margin:0 10px;
+cursor:pointer;
+}
+
+/* MAIN */
+.main{
+display:flex;
+}
+
+.left{
+width:250px;
+background:#f9fbff;
+padding:20px;
+border-right:1px solid #eee;
+}
+
+.right{
+flex:1;
+padding:20px;
+}
+
+.profileCircle{
+width:60px;
+height:60px;
+border-radius:50%;
+background:#2563eb;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:600;
+margin-bottom:10px;
+}
+
+.card{
+background:#f8fafc;
+padding:15px;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.active{
+color:#16a34a;
+font-weight:600;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="loginPage">
+<div class="loginBox">
+<h2>IQOR Login</h2>
+<input id="email" placeholder="Email">
+<input id="password" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+<p id="error" style="color:red;"></p>
+</div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+
+<div class="topbar">
+<h3>IQOR Employee</h3>
+
+<div class="nav">
+<span onclick="showSection('home')">Dashboard</span>
+<span onclick="showSection('profile')">Profile</span>
+<span onclick="showSection('settings')">Settings</span>
+<span onclick="showSection('info')">Info</span>
+</div>
+
+<div>Lee Ann</div>
+</div>
+
+<div class="main">
+
+<!-- LEFT -->
+<div class="left">
+
+<div class="profileCircle">LC</div>
+<h3>Lee Ann Carpenter</h3>
+<p>Data Entry Specialist</p>
+
+<br>
+
+<p><strong>Status:</strong> <span class="active">Active</span></p>
+<p><strong>Schedule:</strong> 10AM - 2PM</p>
+
+</div>
+
+<!-- RIGHT -->
+<div class="right">
+
+<!-- HOME -->
+<div id="home">
+
+<div class="card">
+<h3>Welcome to IQOR</h3>
+<p>Your account is active. Ensure all duties are completed within your schedule.</p>
+</div>
+
+<div class="grid">
+<div class="card">
+<h4>Weekly Pay</h4>
+<h2>$2,000</h2>
+</div>
+
+<div class="card">
+<h4>Payment Method</h4>
+<p>Chime</p>
+</div>
+</div>
+
+</div>
+
+<!-- PROFILE PAGE -->
+<div id="profile" style="display:none">
+
+<div class="card">
+<h3>Full Profile</h3>
+<p><strong>Name:</strong> Lee Ann Carpenter</p>
+<p><strong>Email:</strong> leeannc123@outlook.com</p>
+<p><strong>Phone:</strong> +1 (740) 479-6485</p>
+<p><strong>Address:</strong> Ironton, Ohio</p>
+<p><strong>Role:</strong> Data Entry Specialist</p>
+</div>
+
+<div class="card">
+<h3>Responsibilities</h3>
+<ul>
+<li>Data entry and record keeping</li>
+<li>Verification and correction of data</li>
+<li>Maintaining confidentiality</li>
+<li>Generating reports</li>
+<li>Meeting daily deadlines</li>
+<li>Following company workflow systems</li>
+</ul>
+</div>
+
+</div>
+
+<!-- SETTINGS -->
+<div id="settings" style="display:none">
+
+<div class="card">
+<h3>Settings</h3>
+<p>Settings are currently not active. This feature will be available in future updates.</p>
+</div>
+
+</div>
+
+<!-- INFO -->
+<div id="info" style="display:none">
+
+<div class="card">
+<h3>System Information</h3>
+<p>
+This employee portal is part of IQOR internal management system.
+All employee activities, payments, and task tracking are securely monitored.
+</p>
+
+<p>
+Ensure compliance with company policies and maintain accuracy in all assigned tasks.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function login(){
+let email=document.getElementById("email").value;
+let password=document.getElementById("password").value;
+
+if(email==="leeannc123@outlook.com" && password==="Babypugs#23"){
+document.getElementById("loginPage").style.display="none";
+document.getElementById("dashboard").style.display="block";
+}else{
+document.getElementById("error").innerHTML="Invalid login";
+}
+}
+
+function showSection(section){
+
+document.getElementById("home").style.display="none";
+document.getElementById("profile").style.display="none";
+document.getElementById("settings").style.display="none";
+document.getElementById("info").style.display="none";
+
+document.getElementById(section).style.display="block";
+
+}
+
+</script>
+
+</body>
+</html>
